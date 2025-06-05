@@ -1,0 +1,160 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    align-items: center;
+    flex-direction: row-reverse;
+    max-width: 1200px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+}
+
+.button-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+    width: 100%;
+    max-width: 250px;
+}
+
+.button-panel button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 12px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: clamp(14px, 4vw, 16px);
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.button-panel button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.button-panel button:active {
+    transform: translateY(1px);
+}
+
+.button-panel button.active {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.image-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 1;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.image-display img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+}
+
+@keyframes giggle {
+    0%, 100% { transform: none; }
+    25% { transform: translate(-2px, -2px) rotate(-1deg); }
+    50% { transform: translate(2px, 2px) rotate(1deg); }
+    75% { transform: translate(-2px, -2px) rotate(-1deg); }
+}
+
+.image-display img.giggle {
+    animation: giggle 0.5s ease-in-out;
+}
+
+/* Media Queries for different screen sizes */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        height: 100vh;
+        overflow-y: auto;
+        align-items: center; /* Keep center alignment */
+    }
+    
+    .container {
+        flex-direction: column;
+        gap: 15px;
+        justify-content: center;
+        margin: auto;
+        min-height: auto;
+        padding: 15px;
+    }
+
+    .button-panel {
+        order: 2;
+        max-width: 100%;
+    }
+
+    .image-display {
+        order: 1;
+        aspect-ratio: 4/3;
+        padding: 15px;
+        margin: 0 auto;
+        width: calc(100% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+        min-height: 100vh;
+        height: -webkit-fill-available; /* For iOS Safari */
+    }
+
+    .container {
+        padding: 10px;
+        gap: 10px;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .button-panel {
+        gap: 8px;
+        width: 100%;
+    }
+
+    .button-panel button {
+        padding: 10px 8px;
+    }
+
+    .image-display {
+        padding: 10px;
+        border-radius: 16px;
+        width: calc(100% - 20px);
+    }
+}
